@@ -4,9 +4,12 @@ import { GlobalContext } from '../../context/GlobalState'
 export const IncomeExpenses = () => {
     const { transactions } = useContext(GlobalContext)
 
-    const income = transactions.map((transaction) => transaction > 0)
-    const expenses = transactions.map((transaction) => transaction < 0)
+    let income = 0, expenses = 0;
 
+    transactions.forEach(({ amount }) => {
+        income = amount > 0 ? income + amount : income;
+        expenses = amount < 0 ? expenses + amount : expenses;
+    })
 
     return (
         <div className="inc-exp-container">
@@ -16,7 +19,7 @@ export const IncomeExpenses = () => {
             </div>
             <div>
                 <h4>Expenses</h4>
-                <p className="money minus">-€{expenses}</p>
+                <p className="money minus">€{expenses}</p>
             </div>
         </div>
     )
