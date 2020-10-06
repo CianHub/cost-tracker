@@ -7,17 +7,20 @@ import Container from '@material-ui/core/Container';
 import { IncomeExpenses } from './components/income-expenses/income-expenses';
 import { TransactionList } from './components/TransactionList/TransactionList';
 import { AddTransaction } from './components/AddTransaction/AddTransaction';
+import { GlobalProvider } from './context/GlobalState';
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Header></Header>
-        <Balance></Balance>
-        <IncomeExpenses></IncomeExpenses>
-        <TransactionList></TransactionList>
-        <AddTransaction></AddTransaction>
-      </Container>
+      <GlobalProvider>
+        <Container>
+          <Header></Header>
+          <Balance></Balance>
+          <IncomeExpenses></IncomeExpenses>
+          <TransactionList></TransactionList>
+          <AddTransaction></AddTransaction>
+        </Container>
+      </GlobalProvider>
     </div>
   );
 }
