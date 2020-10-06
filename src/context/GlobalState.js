@@ -22,6 +22,8 @@ export const GlobalProvider = ({ children }) => {
     //actions
     const deleteTransaction = (id) => dispatch({ type: 'DELETE_TRANSACTION', payload: id })
 
+    const addTransaction = (transaction) => dispatch({ type: 'ADD_TRANSACTION', payload: transaction })
+
     // Adds value prop
-    return <GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction }} >{children}</GlobalContext.Provider>
+    return <GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction, addTransaction }} >{children}</GlobalContext.Provider>
 }
